@@ -1,0 +1,5 @@
+text_encoder:
+  target: mld.models.architectures.motion_clip.MotionTextEncoder
+  params:
+    last_hidden_state: false
+    modelpath: ${model.t5_path}

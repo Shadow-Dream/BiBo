@@ -1,0 +1,1 @@
+# [ICML 2025] Endowing GPT-4 with a Humanoid Body: Building the Bridge Between Off-the-Shelf VLMs and the Physical World

@@ -1,0 +1,16 @@
+nohup python pipeline2.py 0 > 0.log 2>&1 &
+nohup python pipeline2.py 1 > 1.log 2>&1 &
+nohup python pipeline2.py 2 > 2.log 2>&1 &
+nohup python pipeline2.py 3 > 3.log 2>&1 &
+nohup python pipeline2.py 4 > 4.log 2>&1 &
+nohup python pipeline2.py 5 > 5.log 2>&1 &
+nohup python pipeline2.py 6 > 6.log 2>&1 &
+nohup python pipeline2.py 7 > 7.log 2>&1 &
+nohup python pipeline2.py 8 > 8.log 2>&1 &
+nohup python pipeline2.py 9 > 9.log 2>&1 &
+nohup python pipeline2.py 10 > 10.log 2>&1 &
+nohup python pipeline2.py 11 > 11.log 2>&1 &
+nohup python pipeline2.py 12 > 12.log 2>&1 &
+nohup python pipeline2.py 13 > 13.log 2>&1 &
+nohup python pipeline2.py 14 > 14.log 2>&1 &
+nohup python pipeline2.py 15 > 15.log 2>&1 &

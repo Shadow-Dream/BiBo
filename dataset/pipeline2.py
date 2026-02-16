@@ -30,27 +30,27 @@ for scene in scenes:
     if os.path.exists(decimated_path):
         continue
     bpy.ops.wm.open_mainfile(filepath=blender_path)
-    print(f"【开始减面】{scene}")
+    print(f"[Start decimation] {scene}")
     decimated_count = 0
-    # 遍历场景中的所有物体
+    # Iterate over all objects in the scene.
     for obj in bpy.context.scene.objects:   
-        # 只处理网格类型的物体
+        # Process mesh objects only.
         if obj.type == 'MESH':
             if "0/0" in obj.name:
                 continue
             
-            # 检查是否已经减面
+            # Skip objects that were already decimated.
             if "decimated" in obj and obj["decimated"]:
-                print(f"跳过 {obj.name}（已减面）")
+                print(f"Skip {obj.name} (already decimated)")
                 continue
             
-            # 激活物体
+            # Set current object as active.
             bpy.context.view_layer.objects.active = obj
             
-            # 获取当前物体的面数
+            # Get current face count.
             face_count = len(obj.data.polygons)
             
-            # 根据面数设置不同的减面比例
+            # Adjust decimation ratio by face count.
             if face_count > 100000:
                 ratio = 10000 / face_count
             elif face_count > 10000:
@@ -58,28 +58,28 @@ for scene in scenes:
             else:
                 continue
 
-            print(f"正在对 {obj.name} 进行减面")
+            print(f"Decimating {obj.name}")
             decimated_count += 1
 
-            # 添加 Decimate Modifier
+            # Add Decimate modifier.
             decimate_modifier = obj.modifiers.new(name="Decimate", type='DECIMATE')
             decimate_modifier.ratio = ratio
             
-            # 应用修改器
+            # Apply modifier.
             bpy.ops.object.modifier_apply(modifier=decimate_modifier.name)
             
-            # 添加标记，表示已减面
+            # Mark object as decimated.
             obj["decimated"] = True
 
-            print(f"减面操作已应用于 {obj.name}, 面数{len(obj.data.polygons)}")
+            print(f"Decimation applied to {obj.name}, faces: {len(obj.data.polygons)}")
 
     if decimated_count:
-        # 2. 保存场景，以便下次加载时保留减面状态
+        # Save scene so decimation state is preserved.
         saved_blend_path = decimated_path
         bpy.ops.wm.save_as_mainfile(filepath=saved_blend_path)
-        print(f"场景已保存至 {saved_blend_path}")
+        print(f"Scene saved to {saved_blend_path}")
 
-    print(f"【完成减面】{scene}")
+    print(f"[Finish decimation] {scene}")
 import bpy
 import mathutils
 import math
@@ -112,27 +112,27 @@ for scene in scenes:
     if os.path.exists(decimated_path):
         continue
     bpy.ops.wm.open_mainfile(filepath=blender_path)
-    print(f"【开始减面】{scene}")
+    print(f"[Start decimation] {scene}")
     decimated_count = 0
-    # 遍历场景中的所有物体
+    # Iterate over all objects in the scene.
     for obj in bpy.context.scene.objects:   
-        # 只处理网格类型的物体
+        # Process mesh objects only.
         if obj.type == 'MESH':
             if "0/0" in obj.name:
                 continue
             
-            # 检查是否已经减面
+            # Skip objects that were already decimated.
             if "decimated" in obj and obj["decimated"]:
-                print(f"跳过 {obj.name}（已减面）")
+                print(f"Skip {obj.name} (already decimated)")
                 continue
             
-            # 激活物体
+            # Set current object as active.
             bpy.context.view_layer.objects.active = obj
             
-            # 获取当前物体的面数
+            # Get current face count.
             face_count = len(obj.data.polygons)
             
-            # 根据面数设置不同的减面比例
+            # Adjust decimation ratio by face count.
             if face_count > 100000:
                 ratio = 10000 / face_count
             elif face_count > 10000:
@@ -140,25 +140,25 @@ for scene in scenes:
             else:
                 continue
 
-            print(f"正在对 {obj.name} 进行减面")
+            print(f"Decimating {obj.name}")
             decimated_count += 1
 
-            # 添加 Decimate Modifier
+            # Add Decimate modifier.
             decimate_modifier = obj.modifiers.new(name="Decimate", type='DECIMATE')
             decimate_modifier.ratio = ratio
             
-            # 应用修改器
+            # Apply modifier.
             bpy.ops.object.modifier_apply(modifier=decimate_modifier.name)
             
-            # 添加标记，表示已减面
+            # Mark object as decimated.
             obj["decimated"] = True
 
-            print(f"减面操作已应用于 {obj.name}, 面数{len(obj.data.polygons)}")
+            print(f"Decimation applied to {obj.name}, faces: {len(obj.data.polygons)}")
 
     if decimated_count:
-        # 2. 保存场景，以便下次加载时保留减面状态
+        # Save scene so decimation state is preserved.
         saved_blend_path = decimated_path
         bpy.ops.wm.save_as_mainfile(filepath=saved_blend_path)
-        print(f"场景已保存至 {saved_blend_path}")
+        print(f"Scene saved to {saved_blend_path}")
 
-    print(f"【完成减面】{scene}")
+    print(f"[Finish decimation] {scene}")

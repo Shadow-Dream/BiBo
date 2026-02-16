@@ -436,7 +436,7 @@ public class UniHSIRobot : MonoBehaviour
         GameObject rightHand = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         rightHand.name = "right_hand";
         rightHand.transform.SetParent(rightHandJoint.transform);
-        rightHand.transform.localPosition = IsaacToUnityPos(Vector3.zero);  // geom 没有 pos，默认为 body 原点
+        rightHand.transform.localPosition = IsaacToUnityPos(Vector3.zero);  // geom has no local position; default to body origin
         rightHand.transform.localScale = Vector3.one * 0.04f * 2;
 
         // Add to jointMap
@@ -521,7 +521,7 @@ public class UniHSIRobot : MonoBehaviour
         rightFoot.name = "right_foot";
         rightFoot.transform.SetParent(rightFootJoint.transform);
         rightFoot.transform.localPosition = IsaacToUnityPos(new Vector3(0.045f, 0f, -0.0225f));
-        rightFoot.transform.localScale = IsaacToUnityPos(new Vector3(0.0885f, 0.045f, 0.0275f) * 2f); // 因为 MuJoCo 是 half-size，Unity 是 full-size
+        rightFoot.transform.localScale = IsaacToUnityPos(new Vector3(0.0885f, 0.045f, 0.0275f) * 2f); // MuJoCo uses half-size; Unity uses full-size
 
         // Add to jointMap
         jointMap["right_foot"] = rightFootJoint;

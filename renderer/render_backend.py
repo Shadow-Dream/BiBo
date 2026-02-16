@@ -144,6 +144,10 @@ if len(sys.argv) > 1:
 else:
     blender_path = "demo"
 
+docker_password = os.getenv("RENDER_BACKEND_PASSWORD", "change_me")
+if docker_password == "change_me":
+    write_log("RENDER_BACKEND_PASSWORD is not set. Using default non-sensitive password.")
+
 request_queue = mp.Queue()
 result_queue = mp.Queue()
 token = 0
@@ -228,12 +232,12 @@ for instance_index in range(8):
         "-e", "DISPLAY_REFRESH=1",
         "-e", "DISPLAY_DPI=1",
         "-e", "DISPLAY_CDEPTH=1",
-        "-e", "PASSWD=mypasswd",
+        "-e", f"PASSWD={docker_password}",
         "-e", "SELKIES_ENCODER=nvh264enc",
         "-e", "SELKIES_VIDEO_BITRATE=8000",
         "-e", "SELKIES_FRAMERATE=60",
         "-e", "SELKIES_AUDIO_BITRATE=128000",
-        "-e", "SELKIES_BASIC_AUTH_PASSWORD=mypasswd",
+        "-e", f"SELKIES_BASIC_AUTH_PASSWORD={docker_password}",
         "-v", "/root/infinigen/:/root/infinigen",
         "-v", "/usr/local/cuda-11.8:/usr/local/cuda-11.8",
         "-v", "/root/miniconda3:/root/miniconda3",

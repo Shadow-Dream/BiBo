@@ -59,7 +59,7 @@ class EmbedTargetLocMultiFast(nn.Module):
         self.J = len(self.joint_names)
         H = hidden_dim or latent_dim
 
-        # 每个条件一套权重：w1[J,H,3], b1[J,H], w2[J,D,H], b2[J,D]
+        # One parameter set per condition: w1[J,H,3], b1[J,H], w2[J,D,H], b2[J,D]
         self.w1 = nn.Parameter(torch.empty(self.J, H, 3))
         self.b1 = nn.Parameter(torch.zeros(self.J, H))
         self.w2 = nn.Parameter(torch.empty(self.J, latent_dim, H))
@@ -279,7 +279,7 @@ class CACLDM(BaseModel):
         ]
         # self.cond_embed = EmbedTargetLocMultiFast(
         #     joint_names=self.cond_names,
-        #     latent_dim=self.latent_dim[1]  # 你在逆扩散里用的latent通道数
+        #     latent_dim=self.latent_dim[1]  # Latent channel count used in reverse diffusion.
         # )
         cond_vectors = []
         for cond_pair in cond_pairs:

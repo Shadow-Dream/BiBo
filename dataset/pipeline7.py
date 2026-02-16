@@ -35,8 +35,8 @@ for scene_name in scenes:
                 parts = line.split()
                 pid = int(parts[1])
                 print(f"Killing render_backend process, PID={pid}")
-                os.kill(pid, signal.SIGKILL)  # 或者 signal.SIGTERM
-                time.sleep(0.1)  # 等一下
+                os.kill(pid, signal.SIGKILL)  # Or use signal.SIGTERM.
+                time.sleep(0.1)  # Short wait before next check.
         if not has:
             break
 
@@ -101,7 +101,7 @@ for scene_name in scenes:
                 shutil.rmtree(result_dir)
             os.makedirs(result_dir)
 
-            # 要执行的命令
+            # Command to execute.
             command = [
                 "python", "closd/run.py",
                 "learning=im_big",
@@ -114,7 +114,7 @@ for scene_name in scenes:
                 "env=closd_planner",
                 "exp_name=CLoSD_multitask_finetune"
             ]
-            # 启动子进程
+            # Start subprocess.
             process = subprocess.Popen(command, 
                                     #   stdout=subprocess.DEVNULL,
                                     #   stderr=subprocess.DEVNULL
@@ -174,8 +174,8 @@ for scene_name in scenes:
                 parts = line.split()
                 pid = int(parts[1])
                 print(f"Killing render_backend process, PID={pid}")
-                os.kill(pid, signal.SIGKILL)  # 或者 signal.SIGTERM
-                time.sleep(0.1)  # 等一下
+                os.kill(pid, signal.SIGKILL)  # Or use signal.SIGTERM.
+                time.sleep(0.1)  # Short wait before next check.
         if not has:
             break
 

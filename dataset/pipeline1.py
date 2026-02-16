@@ -4,17 +4,17 @@ import subprocess
 
 num_rooms = 50
 
-# 输出根目录
+# Output root directory
 output_root = "outputs/blender"
 
-# 通用参数
+# Common arguments
 common_args = (
     "--task coarse "
     "-g fast_solve.gin singleroom.gin "
     "-p compose_indoors.terrain_enabled=False"
 )
 
-# 要生成的房间类型
+# Room types to generate
 room_types = ["Bedroom", "LivingRoom"]
 
 for room_type in room_types:
